@@ -1,9 +1,9 @@
 class User extends React.Component {
     render() {
       return (
-        <div>
-          <img src={this.props.user.avatar_url} style={{maxWidth: '100px'}}/>
-          <a href={this.props.user.html_url} target="_blank">{this.props.user.login}</a>
+        <div className="user">
+          <img className="avatar" src={this.props.user.avatar_url} style={{maxWidth: '100px'}}/>
+          <a className="login" href={this.props.user.html_url} target="_blank">{this.props.user.login}</a>
         </div>
       );
     }
@@ -17,7 +17,7 @@ class UsersList extends React.Component {
   
     render() {
       return (
-        <div>
+        <div className="users">
           {this.users}
         </div>
       );
@@ -49,14 +49,16 @@ class App extends React.Component {
   
     render() {
       return (
-        <div>
-          <form onSubmit={event => this.onSubmit(event)}>
-            <label htmlFor="searchText">Search by user name</label>
+        <div className="App">
+          <h1 className="header">GitHub user searcher</h1>
+          <form className="form" onSubmit={event => this.onSubmit(event)}>
+            <label className="label" htmlFor="searchText">Search by user name</label>
             <input
-              type="text"
-              id="searchText"
-              onChange={event => this.onChangeHandle(event)}
-              value={this.state.searchText}/>
+                className="input"
+                type="text"
+                id="searchText"
+                onChange={event => this.onChangeHandle(event)}
+                value={this.state.searchText}/>
           </form>
           <UsersList users={this.state.users}/>
         </div>
